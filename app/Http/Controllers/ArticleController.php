@@ -65,7 +65,7 @@ class ArticleController extends Controller
     */
 
     // Refactor 
-    
+
     $article = Article::create([
       'title' => request('title'),
       'body' => request('body'),
@@ -80,8 +80,13 @@ class ArticleController extends Controller
 
     */
 
+    dd($article->path());
 
-    return redirect("/article/{$article->id}");
+    return redirect(
+      // First argument is the route name, second argument is the param to pass in.
+      route('articles.getById', $article->id)
+      // Or you can even do $article->path() to use the method we added directly to the model.
+    );
   }
 
   public function showEditForm ($id) {
@@ -101,6 +106,21 @@ class ArticleController extends Controller
 
     return redirect("/article/{$article->id}");
   }
+
+  public function refactoredArticleEdit(Article $article) {
+
+    $validatedAttriutes = request()->validate([
+      'title' => ['required', 'min:3', 'max:255'],
+      'body' => ['required', 'min:1']
+    ]);
+
+    $article->update(
+      $validatedAttriutes
+    );
+
+    return redirect("/article/{$article->id}");
+  }
+
   public function delete() {
     // Delete the function.
   }

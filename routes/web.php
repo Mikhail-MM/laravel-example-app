@@ -69,7 +69,8 @@ Route::get('/landing', [ArticleController::class, 'listLatestArticles']);
 
 Route::get('/article/create', [ArticleController::class, 'showArticleCreationForm']);
 Route::get('/article/{id}/edit', [ArticleController::class, 'showEditForm']);
-Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
+// You can avoid hard-coding routes by using 'named' routes
+Route::get('/article/{id}', [ArticleController::class, 'getArticleById'])->name('articles.getById');
 // When model binding, the {param} has to match the controller param name
 // Using {id} does not work unless the controller had specified (Artcle $id) as the fn sig.
 Route::get('/get-model-bound-article/{article}', [ArticleController::class, 'getModelBoundArticleById']);
