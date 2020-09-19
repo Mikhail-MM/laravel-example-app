@@ -15,23 +15,23 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('template-example/index');
 });
 
 Route::get('/elements', function () {
-    return view('elements');
+    return view('template-example/elements');
 });
 
 Route::get('/landing', function () {
-    return view('landing');
+    return view('template-example/landing');
 });
 
 Route::get('/generic', function () {
-    return view('generic');
+    return view('template-example/generic');
 });
 
 Route::get('/welcome', function () {
-    return view('default');
+    return view('defaults/default');
 });
 
 Route::get('/test', function () {
@@ -42,7 +42,7 @@ Route::get('/test', function () {
   $html = '<div style="background-color: red">Greetings, Earthling</div>';
 
   // Pass the data to the view.
-  return view('test', [
+  return view('database-example/test', [
     'name' => $name,
     'html' => $html
   ]);
@@ -56,7 +56,7 @@ Route::get('/posts/{post}', function($postParam) {
     abort(404, "Sorry, that post was not found!");
   }
 
-  return view('post', [
+  return view('database-example/post', [
     'postEntity' => $postParam
   ]);
 });

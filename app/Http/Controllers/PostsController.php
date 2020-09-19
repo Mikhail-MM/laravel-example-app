@@ -10,7 +10,7 @@ class PostsController extends Controller
   public function render($slug) {
     $post = Post::where('slug', $slug)->firstOrFail();
     
-    return view('db-post', [
+    return view('database-example/db-post', [
       'post' => $post->body
     ]);
   }
