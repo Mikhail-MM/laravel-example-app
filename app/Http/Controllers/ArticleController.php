@@ -26,13 +26,33 @@ class ArticleController extends Controller
   }
 
   public function createNewArticle() {
-    dd(request());
+
+    $article = new Article();
+
+    $article->title = request('title');
+    $article->body = request('body');
+
+    $article->save();
+
+    return redirect("/article/{$article->id}");
   }
-  public function edit () {
-    // Shows a view to edit a resource
+
+  public function showEditForm ($id) {
+    // Show edit form
+    return view('template-example/generic-article-edit-form', [
+      'article' => Article::find($id)
+    ]);
   }
-  public function update() {
+  public function commitArticleEdit($id) {
     // Persist the edit.
+    $article = Article::find($id);
+
+    $article->title = request('title');
+    $article->body = request('body');
+
+    $article->save();
+
+    return redirect("/article/{$article->id}");
   }
   public function delete() {
     // Delete the function.
