@@ -21,6 +21,19 @@ class ArticleController extends Controller
   }
 
     public function getModelBoundArticleById(Article $article) {
+    /*
+    
+      If you want to override the key that is used by the lookup, you need to override a function
+      and return the key pointing to the SQL column that you're looking for
+
+      For example, to look for 'title':
+
+      public function getRouteKeyName() {
+        return 'title';
+      }
+
+    */
+
     return view('template-example/generic-article', [
       'article' => $article
     ]);
