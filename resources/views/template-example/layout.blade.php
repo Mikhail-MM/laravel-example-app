@@ -16,6 +16,7 @@
 	</head>
 	<body class="is-preload">
     <div id="wrapper">
+
       @include('template-example/partials/header')    
       @include('template-example/partials/nav')
       
@@ -24,6 +25,7 @@
       @include('template-example/partials/contact')
       @include('template-example/partials/footer')
       @include('template-example/partials/scripts')
+      
     </div>
 	</body>
 </html>
