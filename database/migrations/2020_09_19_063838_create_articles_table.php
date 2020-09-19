@@ -19,6 +19,12 @@ class CreateArticlesTable extends Migration
             $table->text('title');
             $table->text('body');
             $table->timestamps();
+
+            // Delete all associated ARTICLES when a USER is deleted!
+            $table->foreign('user_id')
+              ->references('id')
+              ->on('users')
+              ->onDelete('cascade');
         });
     }
 
