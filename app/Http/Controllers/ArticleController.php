@@ -16,7 +16,13 @@ class ArticleController extends Controller
 
   public function getArticleById($id) {
     return view('template-example/generic-article', [
-      'article' => Article::find($id)
+      'article' => Article::findOrFail($id)
+    ]);
+  }
+
+    public function getModelBoundArticleById(Article $article) {
+    return view('template-example/generic-article', [
+      'article' => $article
     ]);
   }
 
