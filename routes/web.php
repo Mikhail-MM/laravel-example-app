@@ -47,5 +47,7 @@ Route::get('/posts/{post}', function($postParam) {
 
 // Using a controller instead of passing a closure directly.
 // We can create this controller with the Laravel Artisan CLI
-// php artisan make:controller BlogsController
+// php artisan make:controller PostsController
+
+// When we hit this route, pass in the params into the 'render' method.
 Route::get('/posts-controller/{post}', [PostsController::class, 'render']);
