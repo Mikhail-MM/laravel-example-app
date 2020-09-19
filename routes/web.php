@@ -15,30 +15,12 @@ use App\Models\Article;
 |
 */
 
-Route::get('/', function () {
-    return view('template-example/index');
-});
-
-Route::get('/elements', function () {
-    return view('template-example/elements');
-});
-
-Route::get('/landing', function () {
-    return view('template-example/landing', [
-      'articles' => App\Models\Article::take(3)->latest()->get()
-    ]);
-});
-
-Route::get('/generic', function () {
-    return view('template-example/generic');
-});
-
-Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
-
+// Default Laravel Template
 Route::get('/welcome', function () {
     return view('defaults/default');
 });
 
+// Test Template to show how to grab params from query string & sanitize or un-escape data
 Route::get('/test', function () {
   // Gets the 'name' param from the query string i.e. ?name=jeff
   $name = request('name');
@@ -72,3 +54,21 @@ Route::get('/posts/{post}', function($postParam) {
 
 // When we hit this route, pass in the params into the 'render' method.
 Route::get('/posts-controller/{post}', [PostsController::class, 'render']);
+
+// Full Template Example
+
+Route::get('/', function () {
+    return view('template-example/index');
+});
+
+Route::get('/elements', function () {
+    return view('template-example/elements');
+});
+
+Route::get('/landing', [ArticleController::class, 'listLatestArticles']);
+
+Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
+
+Route::get('/generic', function () {
+    return view('template-example/generic');
+});
