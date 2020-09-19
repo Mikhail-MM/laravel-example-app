@@ -15,6 +15,22 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/elements', function () {
+    return view('elements');
+});
+
+Route::get('/landing', function () {
+    return view('landing');
+});
+
+Route::get('/generic', function () {
+    return view('generic');
+});
+
+Route::get('/welcome', function () {
     return view('default');
 });
 
