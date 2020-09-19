@@ -12,14 +12,21 @@
             @csrf
             <div class="field">
                 <label class="label" for="title">Title</label>
-
+                
                 <div class="control">
                   <input 
                     class="input" 
                     type="text"  
                     name="title" 
                     id="title"
+                    value="{{ old('title') }}"
+                    
                   >
+                  <!-- 
+                    You can use the old() helper to persist data between validations.
+                    Here is how to do it with a checkbox array:
+                    https://stackoverflow.com/questions/39521726/how-to-show-old-data-of-dynamic-checkbox-in-laravel
+                  -->
                 </div>
                 @if ($errors->has('title'))
                   <p>
