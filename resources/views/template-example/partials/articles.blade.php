@@ -10,7 +10,7 @@
         </header>
         <p>{{ $article->body }}</p>
         <ul class="actions">
-          <li><a href="generic" class="button">Learn more</a></li>
+          <li><a href={{ "/article/{$article->id}" }} class="button">Learn more</a></li>
         </ul>
       </div>
     </div>

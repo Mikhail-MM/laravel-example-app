@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ArticleController;
 use App\Models\Article;
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,15 @@ Route::get('/elements', function () {
 
 Route::get('/landing', function () {
     return view('template-example/landing', [
-      'articles' => App\Models\Article::get()
+      'articles' => App\Models\Article::take(3)->latest()->get()
     ]);
 });
 
 Route::get('/generic', function () {
     return view('template-example/generic');
 });
+
+Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
 
 Route::get('/welcome', function () {
     return view('defaults/default');
