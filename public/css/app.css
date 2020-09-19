@@ -1,4 +1,8 @@
+/* 
+$primary: red;
+
 body {
-  background-color: red !important;
+  background-color: $primary !important;
 }
+*/
 

@@ -82,6 +82,12 @@
               </div>
             </div>
           </section>
+
+          <!-- PHP Driven DB Articles -->
+          @include('template-example/partials/articles', [
+            'articles' => $articles
+          ])
+          
         </section>
 
       <!-- Three -->

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
-
+use App\Models\Article;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +23,9 @@ Route::get('/elements', function () {
 });
 
 Route::get('/landing', function () {
-    return view('template-example/landing');
+    return view('template-example/landing', [
+      'articles' => App\Models\Article::get()
+    ]);
 });
 
 Route::get('/generic', function () {
