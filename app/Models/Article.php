@@ -22,5 +22,8 @@ class Article extends Model
     public function path() {
       return route('articles.getById', $this->id);
     }
+    public function getAuthorOfArticle() {
+      
+    }
     use HasFactory;
 }

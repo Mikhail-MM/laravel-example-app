@@ -37,4 +37,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getArticlesPostedByUser() {
+      return $this->hasMany('App\Models\Article'); // select * from articles where user_id (on project model) = id (of user model)
+    }
+
+    public function getProjectsOwnedByUser() {
+      return $this->hasMany('App\Models\Project');
+    }
 }
