@@ -1,5 +1,17 @@
 <?php
 
+/* 
+  This table was created with the following command:
+
+  $ php artisan make:migration create_posts_table
+
+  You can run:
+  
+  'php artisan migrate' to instantiate all migrations.
+  'php artisan migrate:rollback' to remove the migrations.
+
+*/
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
