@@ -67,8 +67,11 @@ Route::get('/elements', function () {
 
 Route::get('/landing', [ArticleController::class, 'listLatestArticles']);
 
+Route::get('/article/create', [ArticleController::class, 'showArticleCreationForm']);
 Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
 
+Route::post('/article', [ArticleController::class, 'createNewArticle']);
+
 Route::get('/generic', function () {
-    return view('template-example/generic');
+  return view('template-example/generic');
 });

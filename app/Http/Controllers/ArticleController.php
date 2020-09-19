@@ -19,4 +19,22 @@ class ArticleController extends Controller
       'article' => Article::find($id)
     ]);
   }
+
+  public function showArticleCreationForm() {
+    // Show Creation View
+    return view('template-example/generic-article-create-form');
+  }
+
+  public function createNewArticle() {
+    dd(request());
+  }
+  public function edit () {
+    // Shows a view to edit a resource
+  }
+  public function update() {
+    // Persist the edit.
+  }
+  public function delete() {
+    // Delete the function.
+  }
 }
