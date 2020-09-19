@@ -27,6 +27,13 @@ class ArticleController extends Controller
 
   public function createNewArticle() {
 
+    // Add Validations
+    // By Default, if validation fails, Laravel will populate back to the original page and pass in an "Errors" object
+    request()->validate([
+      'title' => ['required', 'min:3', 'max:255'],
+      'body' => ['required', 'min:1']
+    ]);
+
     $article = new Article();
 
     $article->title = request('title');
