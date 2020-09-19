@@ -18,7 +18,12 @@
 
             <div class="field">
                 <label class="label" for="title">Title</label>
+                <!-- 
+                  You may want to show the value of the Article in the back-end on initial load,
+                  but in the case of a validation error, you may want to show the 'old' value
 
+                  /* value="{{$errors->any() ? old('title') : $article->title}}" */
+                -->
                 <div class="control">
                     <input class="input" type="text"  name="title" id="title" value="{{ $article->title }}">
                 </div>
