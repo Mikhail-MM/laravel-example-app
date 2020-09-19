@@ -28,7 +28,7 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-							<li><a href="/">Home</a></li>
+							<li><a class="{{ Request::path() === '/' ? 'active-link' : '' }}" href="/">Home</a></li>
 							<li><a href="landing">Landing</a></li>
 							<li><a href="generic">Generic</a></li>
 							<li><a href="elements">Elements</a></li>
