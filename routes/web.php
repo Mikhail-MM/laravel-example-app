@@ -15,7 +15,7 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('default');
 });
 
 Route::get('/test', function () {
