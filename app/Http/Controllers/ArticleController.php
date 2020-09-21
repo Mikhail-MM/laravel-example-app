@@ -5,6 +5,8 @@ use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
+// To see everything, check out request()->all();
+
 class ArticleController extends Controller
 {
 
@@ -55,11 +57,12 @@ class ArticleController extends Controller
 
   public function showArticleCreationForm() {
     // Show Creation View
-    return view('template-example/generic-article-create-form');
+    return view('template-example/generic-article-create-form',[ 
+      'tags' => Tag::all()
+    ]);
   }
 
   public function createNewArticle() {
-
     // Add Validations
     // By Default, if validation fails, Laravel will populate back to the original page and pass in an "Errors" object
     $validatedAttriutes = request()->validate([
@@ -83,7 +86,13 @@ class ArticleController extends Controller
     $article = Article::create([
       'title' => request('title'),
       'body' => request('body'),
+      'user_id' => 1,
     ]);
+
+
+    // Comes through as an array, since we named the <select multiple> 'name' attr as 'tags[]';
+
+    $article->tags()->attach(request('tags'));
 
     /* 
       The validation method returns a keyed associative array which you can pass directly in:
@@ -94,7 +103,12 @@ class ArticleController extends Controller
 
     */
 
-    dd($article->path());
+    // dd($article->path());
+
+    /* 
+      You can use Eloquent Relationships to get the Current User who is signed in
+      auth()->user()->articles()->create({...new Article with all data}) - this sets foreign key automatically.
+    */
 
     return redirect(
       // First argument is the route name, second argument is the param to pass in.
