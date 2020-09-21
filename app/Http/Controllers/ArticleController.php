@@ -9,8 +9,14 @@ class ArticleController extends Controller
 {
 
   public function listLatestArticles() {
+    $articles = Article::take(3)->latest()->get();
+
+    foreach($articles as $article) {
+      $article['tags'] = $article->tags;
+    }
+
     return view('template-example/landing', [
-      'articles' => Article::take(3)->latest()->get()
+      'articles' => $articles
     ]);
   }
 

@@ -14,6 +14,11 @@
             </header>
             <span class="image main"><img src="images/pic11.jpg" alt="" /></span>
             <p>{{ $article->body }}</p>
+            <div class="tags">
+              @foreach ($article->tags as $tag) 
+                <a href='#'>{{ $tag->name }}</a>
+              @endforeach
+            </div>
           </div>
         </section>
 
