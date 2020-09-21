@@ -67,8 +67,11 @@ class ArticleController extends Controller
     // By Default, if validation fails, Laravel will populate back to the original page and pass in an "Errors" object
     $validatedAttriutes = request()->validate([
       'title' => ['required', 'min:3', 'max:255'],
-      'body' => ['required', 'min:1']
+      'body' => ['required', 'min:1'],
+      'tags' => 'exists:tags,id' // This value must map to an ID column value on the TAGS table.
     ]);
+
+  
 
     /*
 
@@ -92,13 +95,23 @@ class ArticleController extends Controller
 
     // Comes through as an array, since we named the <select multiple> 'name' attr as 'tags[]';
 
+    // You can prefix this with if (request()->has('tags)) .. but attach(null) works OK.
     $article->tags()->attach(request('tags'));
 
     /* 
+
       The validation method returns a keyed associative array which you can pass directly in:
       
       Article::create(
         $validatedAttriutes
+      );
+
+      HOWEVER, once you validate TAGS as part of the request cascade, you can't pass in $validatedAttributes directly.
+      This is because tags does not exist on the Article model directly
+      So, you can pass in this request method shorthand which passes in an associative array
+
+      Article::create(
+        request(['title', 'body'])
       );
 
     */
