@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 use App\Models\Article;
-
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
 
   public function listLatestArticles() {
-    $articles = Article::take(3)->latest()->get();
+    if (request('tag')) {
+      $tagFound = Tag::where('name', request('tag'))->firstOrFail();
+      if ($tagFound) {
+        $articles = $tagFound->articles;
+      } 
+    } else {
+      $articles = Article::take(3)->latest()->get();
+    }
+    
 
     foreach($articles as $article) {
       $article['tags'] = $article->tags;

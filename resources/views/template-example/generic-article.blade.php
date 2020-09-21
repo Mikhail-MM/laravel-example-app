@@ -16,7 +16,7 @@
             <p>{{ $article->body }}</p>
             <div class="tags">
               @foreach ($article->tags as $tag) 
-                <a href='#'>{{ $tag->name }}</a>
+                @include('/template-example/partials/tag', [ 'tag' => $tag ])
               @endforeach
             </div>
           </div>

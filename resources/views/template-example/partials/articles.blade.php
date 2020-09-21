@@ -11,7 +11,7 @@
         <p>{{ $article->body }}</p>
         @if (count($article->tags) > 0) 
           @foreach ($article->tags as $tag)
-            <a href='#'> {{ $tag->name }} </a>
+            @include('/template-example/partials/tag', [ 'tag' => $tag ])
           @endforeach
         @endif
         <ul class="actions">
@@ -21,3 +21,15 @@
     </div>
   </section>
 @endforeach
+
+<!-- 
+
+  You can also do a forelse loop
+
+  @forelse ($articles as $article)
+    Render stuff if there are articles
+  @empty
+    Render stuff if the articles array is empty
+  @endforelse
+
+-->

@@ -65,7 +65,7 @@ Route::get('/elements', function () {
     return view('template-example/elements');
 });
 
-Route::get('/landing', [ArticleController::class, 'listLatestArticles']);
+Route::get('/landing', [ArticleController::class, 'listLatestArticles'])->name('articles.index');
 
 Route::get('/article/create', [ArticleController::class, 'showArticleCreationForm']);
 Route::get('/article/{id}/edit', [ArticleController::class, 'showEditForm']);
